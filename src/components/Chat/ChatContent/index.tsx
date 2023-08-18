@@ -118,7 +118,7 @@ const ChatWrapper = styled.div.attrs(props => ({
   width: 88%;
   height: calc(100% - 10rem);
   max-height: calc(100vh - 10rem);
-  margin: 6rem auto 0;
+  margin: 1rem auto 0;
   position: relative;
   padding-bottom: 4.5rem;
 `;
