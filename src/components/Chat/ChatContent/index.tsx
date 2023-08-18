@@ -97,7 +97,7 @@ const defaultRenderPencilIcon = () => (
 );
 
 const defaultRenderSendIcon = () => (
-  <PaperPlaneRight size={28} weight="fill" className="m-auto" />
+  <PaperPlaneRight size={28} weight="fill" className="m-auto" color="white" />
 );
 
 const defaultRenderClearIcon = () => (
