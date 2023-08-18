@@ -49,7 +49,7 @@ const applyGlobalOptions = (command: Command) => {
 applyGlobalOptions(program)
   .description('Download the polyfact chat template from Github.')
   .action(async options => {
-    if (!options.polyfactToken) {
+    if (!options.token) {
       console.error('POLYFACT_TOKEN is required.');
       process.exit(1);
     }
@@ -118,7 +118,7 @@ applyGlobalOptions(program)
         const res = (await generate(
           prompt,
           { model: options?.model ?? 'gpt-4' },
-          { token: options.polyfactToken }
+          { token: options.token }
         ).catch(e => {
           console.error(`Error during OpenAI request: ${e.message}`);
           process.exit(1);
