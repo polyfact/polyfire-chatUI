@@ -26,6 +26,7 @@ export type ChatUIProps = Omit<
   classNameClearModal?: ClearClassNameProps;
   styleClearModal?: ClearStyleProps;
   TitleClearModal?: string;
+  memoryId?: string;
 } & ChatInterfaceProps;
 
 const ChatInterface = styled.div<ChatInterfaceProps>`

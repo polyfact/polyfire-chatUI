@@ -58,6 +58,7 @@ export interface ChatContentProps {
   buttonBorderColor?: string;
   buttonBorderWidth?: string;
   dotsColor?: string;
+  memoryId?: string;
 }
 
 const AIGreetingContainer = styled.div`
@@ -248,6 +249,7 @@ export function ChatContent({
   userMessageBackgroundColor,
   botName = 'AI-Chatbot',
   dotsColor = '#FFFFFF',
+  memoryId,
 }: ChatContentProps) {
   const [inputText, setInputText] = useState('');
   const [disableTextInput, setDisableTextInput] = useState(false);
@@ -268,7 +270,8 @@ export function ChatContent({
     setInputText('');
 
     try {
-      const answer = chat.sendMessageStream(inputText.trim());
+      console.log('memoryId', memoryId);
+      const answer = chat.sendMessageStream(inputText.trim(), { memoryId });
 
       answer.on('data', handleData);
       answer.on('end', () => setLoading(false));

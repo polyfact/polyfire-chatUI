@@ -40,6 +40,7 @@ const applyGlobalOptions = (command: Command) => {
     )
     .option('-n, --name <repo name>', 'Name of the repository to clone')
     .option('-b, --bot <bot name>', 'Name of the bot that you want', 'ChatBot')
+    .option('-x, --memory <memory ID>', 'ID of the memory')
     .option(
       '-p, --prompt <prompt id>',
       'System Prompt ID to load a shared prompt'
@@ -99,6 +100,7 @@ applyGlobalOptions(program)
               dotsColor: "",
               promptId: "${options.prompt ??
                 '49735ec7-6c20-4ceb-9741-3de1db4fe6cd'}",
+              memoryId: "${options.memory ?? ''}",
             },
             footer: {
               bgColor: "",
@@ -112,8 +114,6 @@ applyGlobalOptions(program)
 
           Assistant: Sure! Here is the theme in the config object:
         `;
-
-        console.log('Prompt: ', prompt);
 
         const res = (await generate(
           prompt,

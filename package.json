@@ -1,5 +1,5 @@
 {
-  "version": "0.1.17",
+  "version": "0.1.19",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -54,8 +54,13 @@
   "devDependencies": {
     "@size-limit/preset-small-lib": "^8.2.6",
     "@storybook/addon-postcss": "^2.0.0",
+    "@testing-library/jest-dom": "^6.0.1",
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.3",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "@types/testing-library__jest-dom": "^6.0.0",
+    "@types/testing-library__react": "^10.2.0",
     "@types/uuid": "^9.0.2",
     "autoprefixer": "^10.4.15",
     "husky": "^8.0.3",
