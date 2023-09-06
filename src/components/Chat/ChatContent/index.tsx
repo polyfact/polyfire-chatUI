@@ -273,10 +273,14 @@ export function ChatContent({
 
         answer.on('data', handleData);
         answer.on('end', () => setLoading(false));
-      } catch (error) {
-        setLoading(false);
+
         setDisableTextInput(false);
+        setLoading(false);
+      } catch (error) {
         console.log('error', error);
+        setDisableTextInput(false);
+        setLoading(false);
+      } finally {
       }
     }
   }, [initialMessage]);
