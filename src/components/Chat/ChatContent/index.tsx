@@ -59,6 +59,7 @@ export interface ChatContentProps {
   buttonBorderWidth?: string;
   dotsColor?: string;
   memoryId?: string;
+  initialMessage?: string;
 }
 
 const AIGreetingContainer = styled.div`
@@ -250,6 +251,7 @@ export function ChatContent({
   botName = 'AI-Chatbot',
   dotsColor = '#FFFFFF',
   memoryId,
+  initialMessage,
 }: ChatContentProps) {
   const [inputText, setInputText] = useState('');
   const [disableTextInput, setDisableTextInput] = useState(false);
@@ -259,6 +261,25 @@ export function ChatContent({
   useEffect(() => {
     messagesRef.current = messages;
   }, [messages]);
+
+  useEffect(() => {
+    if (initialMessage) {
+      addMessage('userMessage', initialMessage, true);
+      setLoading(true);
+      setDisableTextInput(true);
+
+      try {
+        const answer = chat.sendMessageStream(initialMessage, { memoryId });
+
+        answer.on('data', handleData);
+        answer.on('end', () => setLoading(false));
+      } catch (error) {
+        setLoading(false);
+        setDisableTextInput(false);
+        console.log('error', error);
+      }
+    }
+  }, [initialMessage]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -282,11 +303,16 @@ export function ChatContent({
     }
   }
 
-  function addMessage(type: string, message: string) {
+  function addMessage(
+    type: string,
+    message: string,
+    isHidden: boolean = false
+  ) {
     const newMessage: MessageProps = {
       id: uuidv4(),
       isUser: type === 'userMessage',
       message: message ?? inputText,
+      hidden: isHidden,
       createdAt: {
         hour: new Date().getHours(),
         minutes: new Date().getMinutes(),

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { useEffect } from 'react';
 import ThreeDotLoader from './ThreeDotLoader';
 
+import ReactMarkdown from 'react-markdown';
+
 const Chat = styled.div.attrs(props => ({
   style: {
     ...props.style,
@@ -155,34 +157,40 @@ export function Messages({
 
   return (
     <Chat className="chat">
-      {messages.map(message => (
-        <MessageBubble
-          isUser={message.isUser}
-          key={message.id}
-          bgColor={
-            message.isUser
-              ? userMessageBackgroundColor
-              : botMessageBackgroundColor
-          }
-          color={message.isUser ? userMessageColor : botMessageColor}
-          style={message.isUser ? style?.userMessage : style?.botMessage}
-          className={
-            message.isUser ? className?.userMessage : className?.botMessage
-          }
-        >
-          <MessageText style={style?.message} className={className?.message}>
-            {message.message}
-          </MessageText>
-          <MessageFooter style={style?.message}>
-            <Name>{message.isUser ? 'Me' : botName}</Name>
-            {`${message.createdAt.hour}:${
-              message.createdAt.minutes < 10
-                ? `0${message.createdAt.minutes}`
-                : message.createdAt.minutes
-            }`}
-          </MessageFooter>
-        </MessageBubble>
-      ))}
+      {messages.map(
+        message =>
+          message?.hidden !== true && (
+            <MessageBubble
+              isUser={message.isUser}
+              key={message.id}
+              bgColor={
+                message.isUser
+                  ? userMessageBackgroundColor
+                  : botMessageBackgroundColor
+              }
+              color={message.isUser ? userMessageColor : botMessageColor}
+              style={message.isUser ? style?.userMessage : style?.botMessage}
+              className={
+                message.isUser ? className?.userMessage : className?.botMessage
+              }
+            >
+              <MessageText
+                style={style?.message}
+                className={className?.message}
+              >
+                <ReactMarkdown>{message.message || ''}</ReactMarkdown>
+              </MessageText>
+              <MessageFooter style={style?.message}>
+                <Name>{message.isUser ? 'Me' : botName}</Name>
+                {`${message.createdAt.hour}:${
+                  message.createdAt.minutes < 10
+                    ? `0${message.createdAt.minutes}`
+                    : message.createdAt.minutes
+                }`}
+              </MessageFooter>
+            </MessageBubble>
+          )
+      )}
       {loading && messages?.[messages?.length - 1]?.isUser && (
         <MessageBubble
           isUser={false}
