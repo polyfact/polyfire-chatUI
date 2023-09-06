@@ -1,160 +1,84 @@
-# TSDX React User Guide
+## ChatUI Component Documentation
 
-Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
+### Introduction
 
-> This TSDX setup is meant for developing React component libraries (not apps!) that can be published to NPM. If you’re looking to build a React-based app, you should use `create-react-app`, `razzle`, `nextjs`, `gatsby`, or `react-static`.
+The ChatUI component is a primary interface for users to interact with the chat feature. Developed using the Polyfact SDK, it provides developers with an extensive range of properties to customize its appearance and behavior. Below is a tabulated breakdown of each property to ensure maximum clarity.
 
-> If you’re new to TypeScript and React, checkout [this handy cheatsheet](https://github.com/sw-yx/react-typescript-cheatsheet/)
+### Installation
 
-## Commands
+To include the ChatUI component in your project, you can easily install it using either yarn or npm:
 
-TSDX scaffolds your new library inside `/src`, and also sets up a [Parcel-based](https://parceljs.org) playground for it inside `/example`.
-
-The recommended workflow is to run TSDX in one terminal:
+**Using Yarn:**
 
 ```bash
-npm start # or yarn start
+yarn add @polyfact/chat
 ```
 
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
-
-Then run the example inside another:
+**Using npm:**
 
 ```bash
-cd example
-npm i # or yarn to install dependencies
-npm start # or yarn start
+npm install @polyfact/chat
 ```
 
-The default example imports and live reloads whatever is in `/dist`, so if you are seeing an out of date component, make sure TSDX is running in watch mode like we recommend above. **No symlinking required**, we use [Parcel's aliasing](https://parceljs.org/module_resolution.html#aliases).
+### Repository
 
-To do a one-off build, use `npm run build` or `yarn build`.
+For more detailed information, contributions, or issues, visit the repository: [polyfact-chat](https://github.com/kevin-btc/polyfact-chat).
 
-To run tests, use `npm test` or `yarn test`.
+| Property               | Type                        | Description                                                               | Default (if applicable) |
+| ---------------------- | --------------------------- | ------------------------------------------------------------------------- | ----------------------- |
+| `classNameChatContent` | `ChatContentClassNameProps` | Customize the class names for different elements within the chat content. | -                       |
+| `styleChatContent`     | `ChatContentStyleProps`     | Apply custom styles to different parts of the chat content.               | -                       |
+| `classNameClearModal`  | `ClearClassNameProps`       | Customize the class name for the clear modal.                             | -                       |
+| `styleClearModal`      | `ClearStyleProps`           | Apply custom styles to the clear modal.                                   | -                       |
+| `TitleClearModal`      | `string`                    | Set the title for the clear modal.                                        | -                       |
+| `memoryId`             | `string`                    | Assign a unique identifier to the chat for memory purposes.               | -                       |
+| `height`               | `string`                    | Define the height of the ChatUI component.                                | `100vh`                 |
+| `width`                | `string`                    | Define the width of the ChatUI component.                                 | `70%`                   |
+| `chat`                 | `Chat`                      | The primary prop to render the chat content.                              | -                       |
+| `renderAIFirstMessage` | `() => React.ReactNode`     | Customize the initial message displayed by the AI.                        | Default AI greeting     |
+| `renderPencilIcon`     | `() => React.ReactNode`     | Customize the pencil icon displayed within the chat.                      | Default pencil icon     |
+| `renderSendIcon`       | `() => React.ReactNode`     | Customize the send icon displayed within the chat.                        | Default send icon       |
+| `renderClearIcon`      | `() => React.ReactNode`     | Customize the clear icon displayed within the chat.                       | Default clear icon      |
+| `placeholderText`      | `string`                    | Define placeholder text for the chat input field.                         | -                       |
+| `className`            | `ChatContentClassNameProps` | Customize the class names for the main ChatUI component.                  | -                       |
+| `style`                | `ChatContentStyleProps`     | Apply custom styles to the ChatUI component.                              | -                       |
+| `Color Customization`  | `string`                    | Customize the color schemes for different elements within the ChatUI.     | -                       |
+| `botName`              | `string`                    | Specify the name of the bot in the chat.                                  | -                       |
+| `initialMessage`       | `string`                    | Define the first message that appears in the chat upon initialization.    | -                       |
 
-## Configuration
+\* Note: Color Customization includes properties such as `chatBackgroundColor`, `chatTextColor`, `inputBackgroundColor`, and more as previously detailed.
 
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
+### Example:
 
-### Jest
-
-Jest tests are set up to run with `npm test` or `yarn test`.
-
-### Bundle analysis
-
-Calculates the real cost of your library using [size-limit](https://github.com/ai/size-limit) with `npm run size` and visulize it with `npm run analyze`.
-
-#### Setup Files
-
-This is the folder structure we set up for you:
-
-```txt
-/example
-  index.html
-  index.tsx       # test your component here in a demo app
-  package.json
-  tsconfig.json
-/src
-  index.tsx       # EDIT THIS
-/test
-  blah.test.tsx   # EDIT THIS
-.gitignore
-package.json
-README.md         # EDIT THIS
-tsconfig.json
+```tsx
+<ChatUI
+  chat={chatInstance}
+  height="500px"
+  width="80%"
+  placeholderText="Type your message here..."
+  botName="ChatBot"
+  initialMessage="Welcome to ChatUI!"
+  styleChatContent={{
+    wrapper: { background: '#f5f5f5' },
+    input: { borderColor: '#ddd' },
+  }}
+/>
 ```
 
-#### React Testing Library
+### Features
 
-We do not set up `react-testing-library` for you yet, we welcome contributions and documentation on this.
+- **Highly Customizable:** With various properties at your disposal, tailor the ChatUI as per your application's requirements.
 
-### Rollup
+- **Lightweight:** Optimized to ensure minimal impact on performance while delivering an engaging user experience.
 
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
+### Contributing
 
-### TypeScript
+Feel free to contribute to the ChatUI component by forking the repository and submitting a pull request. For major changes, please open an issue first to discuss what you would like to change.
 
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
+### License
 
-## Continuous Integration
+The ChatUI component is licensed under the MIT License. See the `LICENSE` file in the repository for more information.
 
-### GitHub Actions
+### Support
 
-Two actions are added by default:
-
-- `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
-- `size` which comments cost comparison of your library on every pull request using [`size-limit`](https://github.com/ai/size-limit)
-
-## Optimizations
-
-Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
-
-```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
-
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
-}
-```
-
-You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
-
-## Module Formats
-
-CJS, ESModules, and UMD module formats are supported.
-
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
-
-## Deploying the Example Playground
-
-The Playground is just a simple [Parcel](https://parceljs.org) app, you can deploy it anywhere you would normally deploy that. Here are some guidelines for **manually** deploying with the Netlify CLI (`npm i -g netlify-cli`):
-
-```bash
-cd example # if not already in the example folder
-npm run build # builds to dist
-netlify deploy # deploy the dist folder
-```
-
-Alternatively, if you already have a git repo connected, you can set up continuous deployment with Netlify:
-
-```bash
-netlify init
-# build command: yarn build && cd example && yarn && yarn build
-# directory to deploy: example/dist
-# pick yes for netlify.toml
-```
-
-## Named Exports
-
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
-
-## Including Styles
-
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
-
-For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
-
-## Publishing to NPM
-
-We recommend using [np](https://github.com/sindresorhus/np).
-
-## Usage with Lerna
-
-When creating a new package with TSDX within a project set up with Lerna, you might encounter a `Cannot resolve dependency` error when trying to run the `example` project. To fix that you will need to make changes to the `package.json` file _inside the `example` directory_.
-
-The problem is that due to the nature of how dependencies are installed in Lerna projects, the aliases in the example project's `package.json` might not point to the right place, as those dependencies might have been installed in the root of your Lerna project.
-
-Change the `alias` to point to where those packages are actually installed. This depends on the directory structure of your Lerna project, so the actual path might be different from the diff below.
-
-```diff
-   "alias": {
--    "react": "../node_modules/react",
--    "react-dom": "../node_modules/react-dom"
-+    "react": "../../../node_modules/react",
-+    "react-dom": "../../../node_modules/react-dom"
-   },
-```
-
-An alternative to fixing this problem would be to remove aliases altogether and define the dependencies referenced as aliases as dev dependencies instead. [However, that might cause other problems.](https://github.com/palmerhq/tsdx/issues/64)
+For any issues, questions, or recommendations, please visit the repository's issue section or contact the maintainers directly. We appreciate your feedback and aim to make ChatUI the go-to solution for chat interfaces in React applications.
