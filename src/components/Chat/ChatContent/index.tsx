@@ -269,9 +269,10 @@ export function ChatContent({
       setDisableTextInput(true);
 
       try {
-        const answer = chat.sendMessageStream(initialMessage, { memoryId });
-
+        const answer = chat.sendMessage(initialMessage, { memoryId });
+        // @ts-ignore
         answer.on('data', handleData);
+        // @ts-ignore
         answer.on('end', () => setLoading(false));
 
         setDisableTextInput(false);
@@ -296,9 +297,10 @@ export function ChatContent({
 
     try {
       console.log('memoryId', memoryId);
-      const answer = chat.sendMessageStream(inputText.trim(), { memoryId });
-
+      const answer = chat.sendMessage(inputText.trim(), { memoryId });
+      // @ts-ignore
       answer.on('data', handleData);
+      // @ts-ignore
       answer.on('end', () => setLoading(false));
     } catch (error) {
       setLoading(false);
