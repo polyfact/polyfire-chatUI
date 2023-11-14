@@ -8,7 +8,7 @@ import {
   Messages,
 } from '../Messages';
 import { v4 as uuidv4 } from 'uuid';
-import { Chat } from 'polyfact';
+import { Chat } from 'polyfire-js';
 import * as Dialog from '@radix-ui/react-dialog';
 import React from 'react';
 import styled from 'styled-components';
@@ -306,6 +306,9 @@ export function ChatContent({
       );
       // @ts-ignore
       answer.on('data', handleData);
+
+      // @ts-ignore
+      answer.on('error', handleData);
       // @ts-ignore
       answer.on('end', () => setLoading(false));
     } catch (error) {
@@ -333,22 +336,29 @@ export function ChatContent({
     setMessages([...messages, newMessage]);
   }
 
-  function handleData(data: any) {
+  function handleData(data: { code: string; message: string } | string) {
     const currentMessages = [...messagesRef.current];
     const lastMsg = currentMessages[currentMessages.length - 1];
+
+    const message =
+      typeof data === 'object' && data !== null && 'code' in data
+        ? data.message
+        : data.toString();
+
+    console.log('message', message);
 
     if (lastMsg?.isUser) {
       currentMessages.push({
         id: uuidv4(),
         isUser: false,
-        message: data.toString(),
+        message: message,
         createdAt: {
           hour: new Date().getHours(),
           minutes: new Date().getMinutes(),
         },
       });
     } else if (!lastMsg?.isUser) {
-      lastMsg.message += data.toString();
+      lastMsg.message += message;
     }
 
     setMessages(currentMessages);

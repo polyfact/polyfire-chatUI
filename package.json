@@ -1,18 +1,14 @@
 {
-  "version": "0.1.29",
+  "version": "0.1.32",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist",
-    "src",
-    "build"
+    "src"
   ],
   "engines": {
     "node": ">=10"
-  },
-  "bin": {
-    "template": "./build/template"
   },
   "scripts": {
     "start": "tsdx watch",
@@ -21,8 +17,7 @@
     "prepare": "yarn lint --fix ; tsdx build",
     "go": "yarn prepare && npm publish",
     "size": "size-limit",
-    "analyze": "size-limit --why",
-    "bin:build": "esbuild bin/index.ts --bundle --outfile=build/template.tmp --platform=node --external:react && echo '#!/usr/bin/env node\n' | cat - build/template.tmp > build/template && rm build/template.tmp"
+    "analyze": "size-limit --why"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -72,7 +67,7 @@
     "@radix-ui/react-dialog": "^1.0.4",
     "commander": "^11.0.0",
     "phosphor-react": "^1.4.1",
-    "polyfact": "^0.1.79",
+    "polyfire-js": "^0.2.12",
     "react-markdown": "^8.0.7",
     "styled-components": "^6.0.7",
     "tsdx": "^0.14.1",
