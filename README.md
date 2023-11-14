@@ -2,7 +2,7 @@
 
 ### Introduction
 
-The ChatUI component is a primary interface for users to interact with the chat feature. Developed using the Polyfact SDK, it provides developers with an extensive range of properties to customize its appearance and behavior. Below is a tabulated breakdown of each property to ensure maximum clarity.
+The ChatUI component is a primary interface for users to interact with the chat feature. Developed using the Polyfire SDK, it provides developers with an extensive range of properties to customize its appearance and behavior. Below is a tabulated breakdown of each property to ensure maximum clarity.
 
 ### Installation
 
@@ -11,18 +11,18 @@ To include the ChatUI component in your project, you can easily install it using
 **Using Yarn:**
 
 ```bash
-yarn add @polyfact/chat
+yarn add @polyfire/chat
 ```
 
 **Using npm:**
 
 ```bash
-npm install @polyfact/chat
+npm install @polyfire/chat
 ```
 
 ### Repository
 
-For more detailed information, contributions, or issues, visit the repository: [polyfact-chat](https://github.com/kevin-btc/polyfact-chat).
+For more detailed information, contributions, or issues, visit the repository: [polyfire-chat](https://github.com/kevin-btc/polyfire-chat).
 
 | Property               | Type                        | Description                                                               | Default (if applicable) |
 | ---------------------- | --------------------------- | ------------------------------------------------------------------------- | ----------------------- |
