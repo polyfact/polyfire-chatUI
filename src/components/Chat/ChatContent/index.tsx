@@ -345,8 +345,6 @@ export function ChatContent({
         ? data.message
         : data.toString();
 
-    console.log('message', message);
-
     if (lastMsg?.isUser) {
       currentMessages.push({
         id: uuidv4(),
