@@ -159,7 +159,7 @@ const TextInput = styled.input.attrs(props => ({
     ...props.style,
   },
   className: props.className,
-}))<{ placeholderTextColor: string }>`
+}))<{ $placeholderTextColor: string }>`
   width: 100%;
   outline: none;
   background-color: transparent;
@@ -168,18 +168,18 @@ const TextInput = styled.input.attrs(props => ({
   padding: 6px 0;
 
   ::placeholder {
-    color: ${props => props.placeholderTextColor} !important;
+    color: ${props => props.$placeholderTextColor} !important;
     opacity: 1;
   }
 
   /* For Internet Explorer 10-11 */
   :-ms-input-placeholder {
-    color: ${props => props.placeholderTextColor} !important;
+    color: ${props => props.$placeholderTextColor} !important;
   }
 
   /* For Internet Explorer 9 */
   ::-ms-input-placeholder {
-    color: ${props => props.placeholderTextColor} !important;
+    color: ${props => props.$placeholderTextColor} !important;
   }
 `;
 
@@ -190,9 +190,9 @@ const Button = styled.div.attrs(props => ({
   className: props.className,
   ...props,
 }))<{
-  buttonBorderColor: string;
-  buttonBorderWidth: string;
-  bgColor: string;
+  $buttonBorderColor: string;
+  $buttonBorderWidth: string;
+  $bgColor: string;
 }>`
   display: flex;
   align-items: center;
@@ -200,8 +200,8 @@ const Button = styled.div.attrs(props => ({
   border-radius: 16px;
   width: 56px;
   height: 56px;
-  border-width: ${props => props.buttonBorderWidth};
-  border-color: ${props => props.buttonBorderColor};
+  border-width: ${props => props.$buttonBorderWidth};
+  border-color: ${props => props.$buttonBorderColor};
   border-style: solid;
   transition: transform 0.2s, background-color 300ms ease-in-out;
   cursor: pointer;
@@ -209,7 +209,7 @@ const Button = styled.div.attrs(props => ({
   &:hover {
     transform: scale(1.05);
   }
-  background-color: ${props => props.bgColor};
+  background-color: ${props => props.$bgColor};
 
   &:hover {
     opacity: 0.8;
@@ -413,7 +413,7 @@ export function ChatContent({
             disabled={disableTextInput}
             style={{ color: inputColor, ...s.input }}
             className={c?.input}
-            placeholderTextColor={placeholderTextColor}
+            $placeholderTextColor={placeholderTextColor}
             onKeyPress={handleKeyPress}
           />
         </InputGroup>
@@ -424,9 +424,9 @@ export function ChatContent({
           <Button
             style={{ ...s?.clearButton }}
             className={c?.clearButton}
-            buttonBorderColor={buttonBorderColor}
-            buttonBorderWidth={buttonBorderWidth}
-            bgColor={buttonBackgroundColor}
+            $buttonBorderColor={buttonBorderColor}
+            $buttonBorderWidth={buttonBorderWidth}
+            $bgColor={buttonBackgroundColor}
           >
             {renderClearIcon()}
           </Button>
@@ -436,9 +436,9 @@ export function ChatContent({
           style={{ ...s?.sendButton }}
           className={c?.sendButton}
           onClick={handleSubmit}
-          buttonBorderColor={buttonBorderColor}
-          buttonBorderWidth={buttonBorderWidth}
-          bgColor={buttonBackgroundColor}
+          $buttonBorderColor={buttonBorderColor}
+          $buttonBorderWidth={buttonBorderWidth}
+          $bgColor={buttonBackgroundColor}
         >
           {renderSendIcon()}
         </Button>

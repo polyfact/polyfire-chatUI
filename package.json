@@ -67,7 +67,7 @@
     "@radix-ui/react-dialog": "^1.0.4",
     "commander": "^11.0.0",
     "phosphor-react": "^1.4.1",
-    "polyfire-js": "^0.2.12",
+    "polyfire-js": "^0.2.19",
     "react-markdown": "^8.0.7",
     "styled-components": "^6.0.7",
     "tsdx": "^0.14.1",

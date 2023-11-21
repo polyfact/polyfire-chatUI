@@ -7205,10 +7205,10 @@ polyfact-io-ts@^2.2.20:
   resolved "https://registry.yarnpkg.com/polyfact-io-ts/-/polyfact-io-ts-2.2.20.tgz#ffb2226d71bf780c0dd398e052aa768c7af167b8"
   integrity sha512-qGF6cWn4sKKrVULhJPRIBF/iOvyFLJpeR59ejD9BpSmSjj+xaY5GE98SRycloR0ORQVMZuedi71VurSTBq5zeQ==
 
-polyfire-js@^0.2.12:
-  version "0.2.12"
-  resolved "https://registry.yarnpkg.com/polyfire-js/-/polyfire-js-0.2.12.tgz#0ee50270c4d162a5f06bc925ab64250d737646d5"
-  integrity sha512-vk1qMhmlI0RyrjbBvbjL+oJ4TjC4v9gvNKGSCO/oHrkiCMosa5WF9dmo5b0K8UsEA3+8XtpGEEEfZ/Iy2RBqkQ==
+polyfire-js@^0.2.19:
+  version "0.2.19"
+  resolved "https://registry.yarnpkg.com/polyfire-js/-/polyfire-js-0.2.19.tgz#539e7198eebbb49eaae11b05ccade8f9e5314577"
+  integrity sha512-pYtCW5db3DFvXw4xS2o9KkL7hL8b1sH6pEpvEYKR0Ui4rJQ6lfanYcOn8L/9fODcC3QcM5Dq6qdTaiNJvCkGVw==
   dependencies:
     "@supabase/supabase-js" "^2.31.0"
     async-mutex "^0.4.0"
